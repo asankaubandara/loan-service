@@ -71,6 +71,17 @@ class LoanServiceApplicationTests {
 		
 		assertEquals(BigDecimal.valueOf(759256.91), principleAmount);
 	}
+	
+	@Test
+	public void testPrincipleAmountWithoutPayment() throws LoanException{
+		
+		List<Payment> payments = new ArrayList<Payment>();
+				
+		BigDecimal principleAmount = loanService.getPrincipleBalance(loan.getInitialAmount(), payments, loan);
+		principleAmount = principleAmount.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+		
+		assertEquals(BigDecimal.valueOf(1000000.00).doubleValue(), principleAmount.doubleValue());
+	}
 
 	@Test
 	public void testInvalidDate() throws LoanException {
