@@ -23,6 +23,7 @@ public class Loan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	// a random key can be assigned on creation, UUID.randomUUID();
 	private long id;
 
 	@Column(name = "initial_amount")
